@@ -2,6 +2,7 @@ package edu.adse2501.sess01_java_util_apis;
 
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 
 /**
@@ -52,11 +53,10 @@ public class HashSetDemo {
     }
 
     /**
-     * Display the design class details using a for ... each loop.
-     * NB Works in java 7 & prior and current versions.
+     * Display the design class details using a for ... each loop : NB Works
+     * in java 7 & prior and current versions.
      */
     private static void displayDesignStudents(Set designClass) {
-        //
         System.out.printf("""
                           
                           The design class has %d students and their names are:
@@ -69,34 +69,37 @@ public class HashSetDemo {
     }
 
     /**
-     * Display the art class details using a for ... each loop.
+     * Display the details of the art students using functional programming
+     * NB: works in Java 8 and later versions
      */
     private static void displayArtStudents(Set artClass) {
-        // Following the same pattern as design class display
         System.out.printf("""
                           
                           The art class has %d students and their names are:
                           
                           """, artClass.size());
 
-        for (Object obj : artClass) {
-            System.out.println(obj);
-        }
+        artClass.forEach((artStudent) -> {
+            System.out.println(artStudent);
+        });
     }
 
     /**
-     * Display all students in the campus using a for ... each loop.
+     * TODO: Assignment -> Write the 'displayAllStudents(allCampusStudents);'
+     * that accepts a set of all student names in the campus and displays them
+     * using an iterator.
      */
     private static void displayAllStudents(Set allCampusStudents) {
-        // Following the same pattern for the total campus
         System.out.printf("""
                           
                           The total campus has %d unique students and their names are:
                           
                           """, allCampusStudents.size());
 
-        for (Object obj : allCampusStudents) {
-            System.out.println(obj);
+        // Implementing the assignment using an Iterator
+        Iterator iterator = allCampusStudents.iterator();
+        while (iterator.hasNext()) {
+            System.out.println(iterator.next());
         }
     }
 }
