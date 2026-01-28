@@ -4,9 +4,9 @@ package edu.adse2501.sess02_generics;
  * Generic base class {@code Container} that can hold items of different types.
  *
  * @param <T> the type of item/contents held by this class.
- * * @author Victor
+ * @author Victor
  */
-public class Container<T> { // Added generic type parameter <T>
+public class Container<T> {
 
     /**
      * The stored item of generic type {@code T}
@@ -23,7 +23,7 @@ public class Container<T> { // Added generic type parameter <T>
 
     /**
      * Returns the stored item.
-     * @return the varT
+     * @return the item
      */
     public T getVarT() { 
         return item;

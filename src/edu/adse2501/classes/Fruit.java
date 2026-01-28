@@ -3,7 +3,6 @@ package edu.adse2501.classes;
 import java.time.LocalDate;
 
 /**
- *
  * @author Victor
  */
 public class Fruit extends Food {
@@ -16,42 +15,19 @@ public class Fruit extends Food {
         this.weight = weight;
     }
 
-    /**
-     * @return the taste
-     */
-    public String getTaste() {
-        return taste;
-    }
-
-    /**
-     * @param taste the taste to set
-     */
-    public void setTaste(String taste) {
-        this.taste = taste;
-    }
-
-    /**
-     * @return the weight
-     */
-    public double getWeight() {
-        return weight;
-    }
-
-    /**
-     * @param weight the weight to set
-     */
-    public void setWeight(double weight) {
-        this.weight = weight;
-    }
+    public String getTaste() { return taste; }
+    public double getWeight() { return weight; }
     
     @Override
     public String toString() {
+        // FIXED: Added an extra %s for super.toString()
         return String.format("""
+                             %s
                              Fruit Details
                              ------------------------
                              Taste: %s
                              Weight in grams: %.2f
                              ------------------------
-                             """,super.toString(), this.getTaste(), this.getWeight());
+                             """, super.toString(), this.getTaste(), this.getWeight());
     }
 }
