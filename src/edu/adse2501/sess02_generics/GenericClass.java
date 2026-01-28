@@ -8,38 +8,25 @@ package edu.adse2501.sess02_generics;
  */
 public class GenericClass<T> {
     
-    /**
-     * The stored value of generic type {@code T}
-     */
     private T varT;
 
-    /**
-     * Default constructor.
-     */
-    public GenericClass() {
-    }
-
-    /**
-     * Parameterized constructor to initialize the stored value.
-     * @param varT the initial value to stored
-     */
     public GenericClass(T varT) {
         this.varT = varT;
     }
 
-    /**
-     * Returns the stored value.
-     * @return the VarT
-     */
     public T getVarT() {
         return varT;
     }
 
-    /**
-     * Set the value to be stored.
-     * @param varT
-     */
     public void setVarT(T varT) {
         this.varT = varT;
+    }
+
+    /**
+     * Returns the name of the class of the object stored in varT.
+     *
+     */
+    public String showType() {
+        return varT.getClass().getName();
     }
 }

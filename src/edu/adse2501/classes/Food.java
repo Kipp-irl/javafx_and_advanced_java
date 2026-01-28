@@ -58,7 +58,7 @@ public class Food {
     /**
      * Returns a formatted string containing the food details.
      * Uses a text block for clean console output.
-     * * @return a formatted string of food details
+     * @return a formatted string of food details
      */
     @Override
     public String toString() {
