@@ -20,7 +20,6 @@ public class Fruit extends Food {
     
     @Override
     public String toString() {
-        // FIXED: Added an extra %s for super.toString()
         return String.format("""
                              %s
                              Fruit Details
