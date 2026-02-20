@@ -38,12 +38,9 @@ public class SQLServerCourses
                 // Display the details of the added course
                 System.out.println("Displaying the details of course number " 
                         + (++n));
+                
+                // Fetch the most recently added course and print it
                 System.out.println(collegeCourses.get(collegeCourses.size() - 1).toString());
-            }
-            
-            System.out.println("\nNumber of courses found: " + n);
-            for(Course c : collegeCourses) {
-                System.out.println(c);
             }
 
         } catch (SQLException ex) {

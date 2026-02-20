@@ -11,10 +11,6 @@ import java.util.logging.Logger;
  * @author Victor
  */
 public class SQLServerOpenConnection {
-
-    // Class constants that will be used to connect to the database
-    // Fixed typo: "databseName" -> "databaseName"
-    // Added: "encrypt=true;trustServerCertificate=true" to prevent SSL errors
     public static final String DBURL = "jdbc:sqlserver://DESKTOP-8A0NOO4\\SQLEXPRESS;databaseName=Victor_ADSE2501_CollegeDB;encrypt=true;trustServerCertificate=true";
 
     private static final String USERNAME = "Java_Sem2";
