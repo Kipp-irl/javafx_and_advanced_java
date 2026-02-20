@@ -22,22 +22,26 @@ public class SQLServerCourses
     {
         List<Course> collegeCourses = new ArrayList<>();
 
+        // Use a try with resources to connect to the SQL Server DB
         try(Connection conn = new SQLServerOpenConnection().createConnection();
             Statement stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                     ResultSet.CONCUR_READ_ONLY);
             ResultSet rs = stmt.executeQuery(COURSE_QUERY))
         {
-            int n = 0;
-            while(rs.next()){
-                collegeCourses.add(new Course(
-                        rs.getString("CourseCode"),
-                        rs.getString("CourseName"),
-                        rs.getFloat("Fee"),
-                        rs.getInt("Duration")
-                ));
-                n++;
+            int n = 0; // Integer used for display purposes
+            while(rs.next())
+            {
+                // Add the courses from the Course table to the list of available courses
+                collegeCourses.add(new Course(rs.getString(1), rs.getString(2),
+                        rs.getFloat(3), rs.getInt(4)));
+
+                // Display the details of the added course
+                System.out.println("Displaying the details of course number " 
+                        + (++n));
+                System.out.println(collegeCourses.get(collegeCourses.size() - 1).toString());
             }
-            System.out.println("Number of courses found: " + n);
+            
+            System.out.println("\nNumber of courses found: " + n);
             for(Course c : collegeCourses) {
                 System.out.println(c);
             }
