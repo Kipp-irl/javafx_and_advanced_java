@@ -20,11 +20,8 @@ public class SQLServerCourses
 
     public static void main(String[] args)
     {
-        // Create a list of available courses.
         List<Course> collegeCourses = new ArrayList<>();
 
-        // Use a try with resources to connect to the SQL Server DB
-        // Note: Added the missing ')' at the end of the try block resources
         try(Connection conn = new SQLServerOpenConnection().createConnection();
             Statement stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                     ResultSet.CONCUR_READ_ONLY);
@@ -32,7 +29,6 @@ public class SQLServerCourses
         {
             int n = 0;
             while(rs.next()){
-                // Add the courses from the course table to the list of available courses
                 collegeCourses.add(new Course(
                         rs.getString("CourseCode"),
                         rs.getString("CourseName"),

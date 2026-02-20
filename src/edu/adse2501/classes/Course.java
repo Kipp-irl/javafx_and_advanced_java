@@ -44,7 +44,7 @@ public class Course {
 
     /**
      * Creates a new course with the specified details.
-     * * @param courseCode The unique identifier/code for the course (e.g. 'ACCP')
+     * @param courseCode The unique identifier/code for the course (e.g. 'ACCP')
      * @param courseName The full name/title of the course
      * @param fee The course fee in Kes.
      * @param duration The length of the course in months
@@ -58,7 +58,7 @@ public class Course {
 
     /**
      * Retrieves/fetches the name of the course
-     * * @return the unique course identifier
+     * @return the unique course identifier
      */
     public String getCourseCode() {
         return courseCode;
@@ -123,7 +123,7 @@ public class Course {
      * <li>Course Duration</li>
      * </ul>
      * </p>
-     * * @return a formatted multi-line string containing the course details.
+     * @return a formatted multi-line string containing the course details.
      */
     @Override
     public String toString(){
