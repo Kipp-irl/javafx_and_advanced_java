@@ -10,16 +10,21 @@ public class DelegationDemo
     public static void main(String[] args)
     {
         // Declare and instantiate a DocumentPrinter object
-        
+        DocumentPrinter printer = new DocumentPrinter();
         
         // Print a PDF Document
-        
+        printer.printDocument("These are the contents of the PDF document.", "PDF");
         
         // Print a Text Docuement
-        
+        printer.printDocument("These are the contents of the Text document.", "Text");
     }
 }
 
+/**
+ * DocumentPrinter class delegates printing responsibilities to the apt
+ * PrintService based on the document type.
+ * * @author a.nyanjui
+ */
 class DocumentPrinter
 {
     private final PDFPrinter pdfPrinter;
@@ -56,10 +61,6 @@ class PDFPrinter implements PrintService
     }
 }
 
-/**
- * TextPrinter class is a specific implementation of the PrintService interface
- * for Text Documents. 
- */
 class TextPrinter implements PrintService
 {
     @Override

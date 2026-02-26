@@ -28,29 +28,43 @@ public class PropertiesDemo
     // main method
     public static void main(String[] args)
     {
+        // Create a properties object
         Properties properties = new Properties();
-        File file = new File(PROPERTY_FILE);
 
-        // Check if the file exists
-        if(file.exists())
+        // Check whether the properties file exists
+        File propertiesFile = new File(PROPERTY_FILE);
+        if(!propertiesFile.exists())
         {
-            // Load properties from the file
-            try(InputStream input = new FileInputStream(PROPERTY_FILE))
-            {
-                properties.load(input);
-                System.out.println("Properties loaded from the file.");
-            }
-            catch(IOException ioe)
-            {
-                System.err.println("Error loading from file.");
-                ioe.printStackTrace();
-            }
-        }
-        else
-        {
-            System.out.println("Properties file not found. Creating a new one...");
+            // When the properties file doesn't exist, create it and set default properties
+            System.out.println("Properties file doesn't exist. Creating a new "
+                    + "one with default values ... ");
             setDefaultProperties(properties);
+        }else
+        {
+            // When the file exists, load the properties from the file
+            loadProperties(properties);
         }
+
+        // Display the properties
+        System.out.println("Properties loaded from file: ");
+        displayProperties(properties);
+
+        // Modify some properties
+        System.out.println("\nModifying some properties: ");
+        properties.setProperty("username", "Victor");
+        properties.setProperty("timeout", "30");
+
+        // Display the modified properties
+        System.out.println("\nModified properties: ");
+        displayProperties(properties);
+
+        // Save the modified properties back to the file
+        saveProperties(properties);
+
+        // Reload and display properties to verify the above changes
+        System.out.println("\nReloading properties from the file to verify " + "changes ...");
+        loadProperties(properties);
+        displayProperties(properties);
     }
 
     /**
@@ -67,6 +81,30 @@ public class PropertiesDemo
 
         // Save the default properties to the file
         saveProperties(properties);
+    }
+    
+    /**
+     * Loads properties from a file into the Properties object. If the file
+     * does not exist, it will create a new file with the default properties.
+     * @param properties 
+     */
+    private static void loadProperties(Properties properties){
+        try(InputStream input = new FileInputStream(PROPERTY_FILE)){
+            // Load properties from the file
+            properties.load(input);
+        }catch(IOException ioe){
+            System.err.println("Error loading properties filed due to:\n" + ioe.getLocalizedMessage());
+        }
+    }
+    
+    
+    /**
+     * Displays all the properties in the Properties object
+     * @param properties 
+     */
+    private static void displayProperties(Properties properties){
+        //Display all properties in the object using a for ... each loop
+        properties.forEach((key,value) -> System.out.println(key + " : " + value));
     }
 
     /**

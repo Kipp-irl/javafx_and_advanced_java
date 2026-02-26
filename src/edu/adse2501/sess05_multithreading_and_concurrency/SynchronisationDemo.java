@@ -23,13 +23,9 @@ public class SynchronisationDemo {
         Counter counter = new Counter();
         
         // We use an array of size 1 to hold the local count so it can be 'final' 
-        // effectively but still mutable inside the lambda.
-        // FIXED: Java array syntax uses curly braces {}, not brackets []
         final int[] thread1Count = {0};
         final int[] thread2Count = {0};
-        
-        // --- Create Thread 1 ---
-        // FIXED: Added proper Thread syntax using a Lambda expression () -> {}
+     
         Thread t1 = new Thread(() -> {
             for(int n = 0; n < 1000; n++) {
                 counter.increment();
@@ -52,9 +48,7 @@ public class SynchronisationDemo {
         t1.start();
         t2.start();
         
-        // FIXED: Added .join()
         // We must wait for the threads to finish before printing the total.
-        // Without this, the system might print the total before the threads are done!
         t1.join();
         t2.join();
         
