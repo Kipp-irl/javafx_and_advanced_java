@@ -115,7 +115,7 @@ final class PayPalPayment extends Payment
     private final String email;
     
     /**
-     * Constructor to initialise the payment amount and email address
+     * Constructor to initialize the payment amount and email address
      * @param amount
      * @param email
      */
